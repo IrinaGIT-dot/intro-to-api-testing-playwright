@@ -1,0 +1,19 @@
+Index: tests/simple-solution-api.spec.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { expect, test } from '@playwright/test'\n\nimport { StatusCodes } from 'http-status-codes'\n\ntest('get order with correct id should receive code 200', async ({ request }) => {\n  // Build and send a GET request to the server\n  const response = await request.get('https://backend.tallinn-learning.ee/test-orders/1')\n  // Log the response status, body and headers\n  console.log('response body:', await response.json())\n  console.log('response headers:', response.headers())\n  // Check if the response status is 200\n  expect(response.status()).toBe(StatusCodes.OK)\n})\n\ntest('get order with incorrect id should receive code 400', async ({ request }) => {\n  // Build and send a GET request to the server\n  const response = await request.get('https://backend.tallinn-learning.ee/test-orders/0')\n  // Log the response status, body and headers\n  console.log('response body:', await response.json())\n  console.log('response headers:', response.headers())\n  // Check if the response status is 400\n  expect(response.status()).toBe(StatusCodes.BAD_REQUEST)\n})\n\ntest('get order with incorrect symbol in id should receive code 400', async ({ request }) => {\n  // Build and send a GET request to the server\n  const response = await request.get('https://backend.tallinn-learning.ee/test-orders/b')\n  // Log the response status, body and headers\n  console.log('response body:', await response.json())\n  console.log('response headers:', response.headers())\n  // Check if the response status is 400\n  expect(response.status()).toBe(StatusCodes.BAD_REQUEST)\n})\n\ntest('post order with correct data should receive code 201', async ({ request }) => {\n  // prepare request body\n  const requestBody = {\n    status: 'OPEN',\n    courierId: 0,\n    customerName: 'string',\n    customerPhone: 'string',\n    comment: 'string',\n    id: 0,\n  }\n  // Send a POST request to the server\n  const response = await request.post('https://backend.tallinn-learning.ee/test-orders', {\n    data: requestBody,\n  })\n  // Log the response status and body\n  console.log('response status:', response.status())\n  console.log('response body:', await response.json())\n  expect(response.status()).toBe(StatusCodes.OK)\n})\n\ntest('post order with incorrect data should receive code 400', async ({ request }) => {\n  // prepare request body\n  const requestBody = {\n    status: 'CLOSED',\n    courierId: 0,\n    customerName: 'string',\n    customerPhone: 'string',\n    comment: 'string',\n    id: 0,\n  }\n  // Send a POST request to the server\n  const response = await request.post('https://backend.tallinn-learning.ee/test-orders', {\n    data: requestBody,\n  })\n  // Log the response status and body\n  console.log('response status:', response.status())\n  console.log('response body:', await response.text())\n  expect(response.status()).toBe(StatusCodes.BAD_REQUEST)\n})\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/tests/simple-solution-api.spec.ts b/tests/simple-solution-api.spec.ts
+--- a/tests/simple-solution-api.spec.ts	(revision 6c0e99197ff80fa45ecba032c6e5b0f91fe792ee)
++++ b/tests/simple-solution-api.spec.ts	(date 1729531521744)
+@@ -16,7 +16,7 @@
+   // Build and send a GET request to the server
+   const response = await request.get('https://backend.tallinn-learning.ee/test-orders/0')
+   // Log the response status, body and headers
+-  console.log('response body:', await response.json())
++  console.log('response body:', await response.json()) //
+   console.log('response headers:', response.headers())
+   // Check if the response status is 400
+   expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
