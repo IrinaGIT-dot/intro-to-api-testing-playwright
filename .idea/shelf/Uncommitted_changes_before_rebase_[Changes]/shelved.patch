@@ -1,0 +1,18 @@
+Index: tests/simple-solution-api.spec.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { expect, test } from '@playwright/test'\nimport {OrderDto} from '../tests/dto/order-dto'\nimport { StatusCodes } from 'http-status-codes'\n\ntest('get order with correct id should receive code 200', async ({ request }) => {\n  // Build and send a GET request to the server\n  const response = await request.get('https://backend.tallinn-learning.ee/test-orders/1')\n  // Log the response status, body and headers\n  console.log('response body:', await response.json()) //\n  console.log('response headers:', response.headers())\n  // Check if the response status is 200\n  expect(response.status()).toBe(200)\n})\n\ntest('post order with correct data should receive code 201', async ({ request }) => {\n  // prepare request body\n  const requestBody = {\n    status: 'OPEN',\n    courierId: 0,\n    customerName: 'string',\n    customerPhone: 'string',\n    comment: 'string',\n    id: 0,\n  }\n  // Send a POST request to the server\n  const response = await request.post('https://backend.tallinn-learning.ee/test-orders', {\n    data: requestBody,\n  })\n  // Log the response status and body\n  console.log('response status:', response.status())\n  console.log('response body:', await response.json())\n  expect(response.status()).toBe(StatusCodes.OK)\n})\n\ntest('post order with created request body should receive code 200', async ({ request }) => {\n  // prepare request body\n  const requestBody = OrderDto.createOrderWithRandomData()\n    /*status: 'OPEN',\n    courierId: 0,\n    customerName: 'string',\n    customerPhone: 'string',\n    comment: 'string',\n    id: 0,\n  }*/\n  // Send a POST request to the server\n  const response = await request.post('https://backend.tallinn-learning.ee/test-orders', {\n    data: requestBody,\n  })\n  // Log the response status and body\n  console.log('response status:', response.status())\n  console.log('response body:', await response.json())\n  expect(response.status()).toBe(StatusCodes.OK)\n  const responseBody = await response.json()\n  expect.soft(responseBody.status).toBe('OPEN')\n  expect.soft(responseBody.courierId).toBeDefined()\n  expect.soft(responseBody.customerName).toBeDefined()\n})\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/tests/simple-solution-api.spec.ts b/tests/simple-solution-api.spec.ts
+--- a/tests/simple-solution-api.spec.ts	(revision 823e298b5c8f7107d35b499572535af3e8bd4c8a)
++++ b/tests/simple-solution-api.spec.ts	(date 1729704128645)
+@@ -32,6 +32,7 @@
+   expect(response.status()).toBe(StatusCodes.OK)
+ })
+ 
++// new test using order-dto.ts
+ test('post order with created request body should receive code 200', async ({ request }) => {
+   // prepare request body
+   const requestBody = OrderDto.createOrderWithRandomData()

@@ -32,6 +32,7 @@ test('post order with correct data should receive code 201', async ({ request })
   expect(response.status()).toBe(StatusCodes.OK)
 })
 
+// new test using order-dto.ts
 test('post order with created request body should receive code 200', async ({ request }) => {
   // prepare request body
   const requestBody = OrderDto.createOrderWithRandomData()
