@@ -1,27 +1,25 @@
-import { describe } from 'node:test'
 import { expect, test } from '@playwright/test'
 import { LoginDto } from './dto/login-dto'
-import { request } from 'node:https'
+import { describe } from 'node:test'
 const serviceURL = 'https://backend.tallinn-learning.ee/'
-  const loginPath = 'login/student'
+const loginPath = 'login/student'
 
-test.describe('Login testing', () => {
-
-  test('Login with correct data', async () =>{
+describe('API login tests', () => {
+  test('Login with correct data', async ({ request }) => {
     const requestBody = LoginDto.createLoginWithCorrectData()
     const response = await request.post(`${serviceURL}${loginPath}`, {
-      data: requestBody
+      data: requestBody,
     })
-    //const responseBody = await response.text()
+        //const responseBody = await response.text()
     expect(response.status()).toBe(200)
     })
 
-  test('Login with incorrect data', async () =>{
+  test('Login with incorrect data', async ({ request }) => {
     const requestBody = LoginDto.createLoginWithIncorrectData()
     const response = await request.post(`${serviceURL}${loginPath}`, {
-      data: requestBody
+      data: requestBody,
     })
     //const responseBody = await response.text()
-    expect(response.status()).toBe(400)
+    expect(response.status()).toBe(401)
   })
   })

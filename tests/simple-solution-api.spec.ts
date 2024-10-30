@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import {OrderDto} from '../tests/dto/order-dto'
+import { OrderDto } from './dto/order-dto'
 import { StatusCodes } from 'http-status-codes'
 
 test('get order with correct id should receive code 200', async ({ request }) => {
