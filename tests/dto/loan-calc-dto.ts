@@ -22,7 +22,6 @@ export class loanCalcDto {
     this.loanPeriod = loanPeriod
   }
 
-
   static createLoanCalculationWithNegativeData(): loanCalcDto {
     return new loanCalcDto(19, -3, 60, true, 6, 6)
   }
