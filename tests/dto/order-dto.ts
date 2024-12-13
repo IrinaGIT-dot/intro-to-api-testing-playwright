@@ -36,49 +36,21 @@ export class OrderDto {
 
   //a method for instance
   static createdOrderWithCorrectData(): OrderDto {
-    return new OrderDto(
-      'OPEN',
-      0,
-      'Harry',
-      '+37255544422',
-      'hello THYOk',
-      1,
-    )
+    return new OrderDto('OPEN', 0, 'Harry', '+37255544422', 'hello THYOk', 1)
   }
 
   //a method to update status of instance
   static updateOrderStatus(): OrderDto {
-    return new OrderDto(
-      'INPROGRESS',
-      0,
-      'Harry',
-      '+37255544422',
-      'hello THYOk',
-      1,
-    )
+    return new OrderDto('INPROGRESS', 0, 'Harry', '+37255544422', 'hello THYOk', 1)
   }
 
   //a method to update status of instance
   static updateOrderStatusToDelivered(): OrderDto {
-    return new OrderDto(
-      'DELIVERED',
-      0,
-      'Harry',
-      '+37255544422',
-      'hello THYOk',
-      1,
-    )
+    return new OrderDto('DELIVERED', 0, 'Harry', '+37255544422', 'hello THYOk', 1)
   }
 
   //a method to update status of instance
   static updateOrderStatusToClosed(): OrderDto {
-    return new OrderDto(
-      'CLOSED',
-      0,
-      'Harry',
-      '+37255544422',
-      'hello THYOk',
-      1,
-    )
+    return new OrderDto('CLOSED', 0, 'Harry', '+37255544422', 'hello THYOk', 1)
   }
 }
