@@ -21,8 +21,11 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Ignore fsevents
+        run: npm config set optional false
+
       - name: Install dependencies
-        run: npm install --no-optional
+        run: npm install
 
       - name: Run Prettier check
         run: |
