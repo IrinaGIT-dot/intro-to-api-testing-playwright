@@ -21,9 +21,6 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Ignore fsevents
-        run: --omit=optional
-
       - name: Install dependencies
         run: npm install
 
