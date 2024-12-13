@@ -93,7 +93,9 @@ test('Calculate positive case for underage person should receive 200', async ({ 
   expect.soft(responseBody.riskDecision).toBe('positive')
 })
 
-test('Calculate negative case with negative amount in debt should receive 400', async ({ request, }) => {
+test('Calculate negative case with negative amount in debt should receive 400', async ({
+  request,
+}) => {
   const requestBody = loanCalcDto.createLoanCalculationWithNegativeData()
   const response = await request.post(`${serviceURL}${loginPath}`, {
     data: requestBody,
@@ -102,7 +104,7 @@ test('Calculate negative case with negative amount in debt should receive 400', 
   console.log('response status:', response.status())
 })
 
-test('Calculate negative case income = 0 should receive 400', async ({ request, }) => {
+test('Calculate negative case income = 0 should receive 400', async ({ request }) => {
   const requestBody = loanCalcDto.createLoanCalculationWithZeroIncome()
   const response = await request.post(`${serviceURL}${loginPath}`, {
     data: requestBody,
@@ -111,7 +113,7 @@ test('Calculate negative case income = 0 should receive 400', async ({ request, 
   console.log('response status:', response.status())
 })
 
-test('Calculate negative case without input data should receive 400', async ({ request, }) => {
+test('Calculate negative case without input data should receive 400', async ({ request }) => {
   const requestBody = loanCalcDto.createLoanCalculationWithEmptyData()
   const response = await request.post(`${serviceURL}${loginPath}`, {
     data: requestBody,
