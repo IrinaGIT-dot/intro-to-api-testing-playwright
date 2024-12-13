@@ -96,7 +96,7 @@ export class loanCalcDto {
 
   // add a method to create a new empty instance
   static createLoanCalculationWithEmptyData(): loanCalcDto {
-    return new loanCalcDto(null, null, null, null, null, null)
+    return new loanCalcDto(0, 0, 0, true, 0, 0)
   }
 
   // add a method to create a new negative instance with income = 0

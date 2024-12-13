@@ -27,4 +27,4 @@ Checklist
 | 24 | POST | Calculate risk decision with correct body for underage person| {"income": 1000, "debt": 100, "age": 15, "employed": true, "loanAmount": 50, "loanPeriod": 3}|200|
 | 25 | POST | Calculate risk decision with negative debt| {"income": 1000, "debt": -100, "age": 16, "employed": true, "loanAmount": 50, "loanPeriod": 3}|400|
 | 26 | POST | Calculate risk decision with income = 0| {"income": 1000, "debt": 100, "age": 16, "employed": true, "loanAmount": 50, "loanPeriod": 3}|400|
-| 27 | POST | Calculate risk decision without input values | {"income": , "debt": , "age": , "employed": , "loanAmount": , "loanPeriod": }|400|
+| 27 | POST | Calculate risk decision where input values are zero | {"income": 0, "debt": 0, "age": 0, "employed": true, "loanAmount": 0, "loanPeriod": 0}|400|

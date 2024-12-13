@@ -113,7 +113,7 @@ test('Calculate negative case income = 0 should receive 400', async ({ request }
   console.log('response status:', response.status())
 })
 
-test('Calculate negative case without input data should receive 400', async ({ request }) => {
+test('Calculate negative case where values are zero data should receive 400', async ({ request }) => {
   const requestBody = loanCalcDto.createLoanCalculationWithEmptyData()
   const response = await request.post(`${serviceURL}${loginPath}`, {
     data: requestBody,
